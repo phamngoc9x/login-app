@@ -1,7 +1,7 @@
-import fetchData  from './fetchData';
 import { combineReducers }  from 'redux';
+import updateList  from './updateList';
 
 const allReducer = combineReducers({
-  data : fetchData
+  isLogin : updateList
 })
 export default allReducer;

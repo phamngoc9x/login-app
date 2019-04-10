@@ -1,8 +1,8 @@
-const noteInitialState = []
+const noteInitialState = false
 const allReducer = (state = noteInitialState, action) => {
   switch (action.type) {
     case 'UPDATE_LIST':
-      return action.data
+      return action.isLogin
     default:
       return state
   }
