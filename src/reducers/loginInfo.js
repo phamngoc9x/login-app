@@ -1,7 +1,7 @@
-const noteInitialState = false
+const noteInitialState = {}
 const allReducer = (state = noteInitialState, action) => {
   switch (action.type) {
-    case 'UPDATE_LIST':
+    case 'LOGIN_INFO':
       return action.isLogin
     default:
       return state

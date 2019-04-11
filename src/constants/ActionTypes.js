@@ -1,2 +1,3 @@
-export const UPDATE_LIST = 'UPDATE_LIST';
-export const FETCH_DATA = 'FETCH_DATA';
+export const LOGIN_INFO = 'LOGIN_INFO';
+export const LOGIN = 'LOGIN';
+export const SIGN_UP = 'SIGN_UP';

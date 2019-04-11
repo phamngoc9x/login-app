@@ -1,31 +1,34 @@
 import * as types from '../constants/ActionTypes';
 import callApi from '../utils/apiCaller';
 
-const updateList = (isLogin) =>{
-  console.error("isLogin", isLogin)
+const loginInfo = (isLogin) =>{
   return {
-    type: types.UPDATE_LIST,
+    type: types.LOGIN_INFO,
     isLogin 
   }
 }
-const fetchData = (data) =>{
+const login = (data) =>{
   return (dispatch) =>{
-    //console.log(data);
     return callApi('login', 'post', data).then(res => {
+      var isLogin = true;
       localStorage.setItem('accessToken', JSON.stringify(res.data));
-      console.error("res.data.accessToken", res.data.accessToken)
       if(res.data.accessToken!== undefined){
-        var isLogin = true;
-        dispatch(updateList(isLogin));
+        dispatch(loginInfo(isLogin));
       }
       else{
-        var isLogin = false;
-        dispatch(updateList(isLogin));
+        isLogin = false;
+        dispatch(loginInfo(isLogin));
       }
+    })
+  }
+}
+const signUp = (data) =>{
+  return (dispatch) =>{
+    return callApi('signup', 'post', data).then(res => {
       console.log(res.data);
-      
+      localStorage.setItem('addNew', JSON.stringify(res.data));
     })
   }
 }
 
-export { updateList, fetchData}
+export { loginInfo, login, signUp}
