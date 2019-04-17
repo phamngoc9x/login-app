@@ -36,10 +36,10 @@ class Login extends Component {
       if(result){
         this.props.history.push("/");
       }
-      if((JSON.parse(localStorage.getItem('accessToken')).name== "NotAuthenticated")) {
-        this.setState({
-          showMessages: true,
-        })
+      if((JSON.parse(localStorage.getItem('accessToken')).name=== "NotAuthenticated")) {
+        // this.setState({
+        //   showMessages: true,
+        // })
       }
     }
     

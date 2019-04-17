@@ -30,5 +30,22 @@ const signUp = (data) =>{
     })
   }
 }
+export const getPost = (data) =>{
+  return {
+    type: types.GET_POST,
+    data 
+  }
+}
+
+export const fetchData = () =>{
+  return (dispatch) =>{
+    return callApi('posts', 'GET').then(res => {
+      console.log(res.data);
+      dispatch(getPost(res.data))
+      
+    })
+  }
+}
+
 
 export { loginInfo, login, signUp}

@@ -36,10 +36,10 @@ class SignUp extends Component {
       if(result){
         this.props.history.push("/login");
       }
-      if((JSON.parse(localStorage.getItem('accessToken')).name== "NotAuthenticated")) {
-        this.setState({
-          showMessages: true,
-        })
+      if((JSON.parse(localStorage.getItem('accessToken')).name=== "NotAuthenticated")) {
+        // this.setState({
+        //   showMessages: true,
+        // })
       }
     }
   }

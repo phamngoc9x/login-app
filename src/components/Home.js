@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { fetchData } from '../actions/index';
+import { connect } from 'react-redux';
 
-export default class Home extends Component {
+class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      data: this.props.data
+    }
+  }
+  componentDidMount(){
+    this.props.fetchData();
+  }
   componentDidUpdate(){
     if(localStorage.getItem('accessToken') == null){
       localStorage.setItem('accessToken', JSON.stringify({}));
@@ -9,6 +20,7 @@ export default class Home extends Component {
     }
   }
   render() {
+    console.log(this.props.data);
     return (
       <div className="d-flex">
         <div className="mt-3"><Link to="/login">Login</Link></div>
@@ -17,3 +29,17 @@ export default class Home extends Component {
     )
   }
 }
+const mapStateToProps = (state, ownProps) => {
+  console.error(state);
+  return {
+    data: state.data
+  }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchData: (data) => {
+      dispatch(fetchData(data))
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
